@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>
+<body>
+    <!-- dynamic content -->
+    
+    <!-- if we use = here it will take special characters and end up print string values instead of html.so we use neg - sign    -->
+    
+    <%- include('./partials/nav.ejs') %>
+    
+    <div class="blogs content">
+        <h2>All Notes</h2>
+        <!-- javascript logic with ejs is below -->
+        <% if (blogs.length >0){%>
+            <% blogs.forEach(blog =>{%>
+            <a class="single" href="/blogs/<%= blog._id %>">
+            <h3 class="title"><%= blog.title %></h3>
+            <p class="snippet"><%= blog.snippet %></p>
+        </a>
+            <%})%>
+        <% } else{%>
+        <p>There are no notes to display.</p>
+        <% } %>
+        
+    </div>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+
+<!-- ejs templates are processed thruogh the EJS view engine on the server -->
